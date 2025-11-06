@@ -1,106 +1,187 @@
-PDF to Excel converter
-A comprehensive Streamlit application that provides powerful PDF processing capabilities including PDF to Excel conversion and OCR text extraction from Excel files.
-It has 2 tools PDF to Excel Converter and Text Extractor for Excel Images. 
 
-Features
-1. PDF to Excel Converter: Convert PDF files to Excel format using Spire.PDF without any format changes.
+# 📄 PDF to Excel Converter & Excel Image OCR (Streamlit App)
 
-2. Text Extractor for Excel Images: Extract text from images embedded in Excel files. Make sure to unput the column name in which the extraction to take place. 
+A **comprehensive Streamlit application** that provides powerful PDF and Excel processing capabilities, including **PDF → Excel conversion** and **OCR text extraction** from images embedded in Excel files.
 
+This app offers **two main tools**:
 
-Automatically detect and use Tesseract OCR
+1. 🧾 **PDF to Excel Converter**
+2. 🧠 **Text Extractor for Excel Images**
 
-Support for multiple sheets and column specifications.Flexible text joining options for multiple images in the same cell.Remove images after OCR processing, leaving clean text
+---
 
-**Installation**
-Clone the repository:
+## 🚀 Features
 
-**bash**
+### 🔹 1. PDF to Excel Converter
+
+* Convert PDF files to Excel format using **Spire.PDF**
+* Preserve layout and formatting (no structural changes)
+* Supports multi-page PDFs
+
+### 🔹 2. Text Extractor for Excel Images
+
+* Extract text from **images embedded in Excel (.xlsx)** files using **Tesseract OCR**
+* Specify which **columns** to process
+* Works across **multiple sheets**
+* Auto-detects Tesseract installation
+* Flexible **text joining options** for multiple images in one cell
+* Option to **remove images after OCR**, leaving clean text behind
+
+---
+
+## 🧩 Key Highlights
+
+✅ Automatic Tesseract OCR detection
+✅ Support for multi-sheet Excel files
+✅ Specify columns for OCR processing
+✅ Join extracted text flexibly (space, newline, or custom)
+✅ Clean and ready-to-use Excel output
+
+---
+
+## ⚙️ Installation
+
+### 1️⃣ Clone the Repository
+
+```bash
 git clone <repository-url>
 cd <repository-name>
-Install the required dependencies:
+```
 
-**bash**
+### 2️⃣ Install Required Dependencies
+
+```bash
 pip install -r requirements.txt
-Install Tesseract OCR:
+```
 
-**Windows:**
+### 3️⃣ Install Tesseract OCR
 
-Download from Tesseract GitHub releases
-Or use Chocolatey: choco install tesseract
+#### 🪟 Windows
 
-**macOS:**
+* Download from [Tesseract GitHub Releases](https://github.com/tesseract-ocr/tesseract/releases)
+* Or install via Chocolatey:
 
-bash
+  ```bash
+  choco install tesseract
+  ```
+
+#### 🍏 macOS
+
+```bash
 brew install tesseract
-Linux (Ubuntu/Debian):
+```
 
-bash
+#### 🐧 Linux (Ubuntu/Debian)
+
+```bash
 sudo apt-get update
 sudo apt-get install tesseract-ocr
-Linux (CentOS/RHEL):
+```
 
-bash
+#### 🐧 Linux (CentOS/RHEL)
+
+```bash
 sudo yum install tesseract
-Usage
+```
+
+---
+
+## ▶️ Usage
+
 Run the main application:
 
-bash
+```bash
 streamlit run app.py
-The application will open in your default web browser.Use the sidebar to navigate between different tools:
+```
 
-**PDF to Excel Converter**
-Upload a PDF file.Click convert to generate Excel file.Download the converted Excel file
+Once launched, open your **web browser** — the app will start automatically.
 
-**Text Extractor for Excel Images**
-Upload an Excel (.xlsx) file. Configure OCR settings in the sidebar. Tesseract path will be auto-detected if available. Specify target columns for OCR processing. Run OCR to extract text from images
+### 🧾 PDF to Excel Converter
 
-Download the processed Excel file with text instead of images
+1. Upload a `.pdf` file
+2. Click **Convert**
+3. Download the resulting `.xlsx` file
 
-Project Structure
-text
-├── app.py                 # Main application launcher
-├── PDIG.py              # PDF to Excel converter
-├── Text_extractor.py           # Excel Image OCR tool
-├── requirements.txt     # Python dependencies
-└── README.md           # This file
+### 🧠 Text Extractor for Excel Images
 
+1. Upload an `.xlsx` file
+2. Configure OCR settings in the sidebar
+3. (Optional) Provide Tesseract path if not auto-detected
+4. Specify target columns for OCR processing
+5. Click **Run OCR**
+6. Download the cleaned Excel file (images replaced with text)
 
-Dependencies
-Key dependencies include:
+---
 
-streamlit - Web application framework
-pytesseract - Python wrapper for Tesseract OCR
-openpyxl - Excel file manipulation
-spire.pdf - PDF processing and conversion
-Pillow - Image processing
-pymupdf - PDF to image conversion
+## 📁 Project Structure
 
+```
+📦 Project
+├── app.py                 # 🎯 Main Streamlit application
+├── PDIG.py                # ⚙️ PDF → Excel converter (Spire.PDF)
+├── Text_extractor.py      # 🧠 Excel Image OCR module
+├── requirements.txt       # 📦 Dependencies
+└── README.md              # 📝 This file
+```
 
-Maintains tabular structure and formatting where possible
+---
 
-**Excel Image OCR**
-Extracts embedded images from Excel cells. Processes images using Tesseract OCR. Replaces images with extracted text. Removes original images from the Excel file. Provides cleaned Excel file for download
+## 🧠 Dependencies
 
-**Troubleshooting**
-Tesseract Not Found
-If Tesseract is not automatically detected:
+| Library       | Purpose                          |
+| ------------- | -------------------------------- |
+| `streamlit`   | Web app framework                |
+| `pytesseract` | Python wrapper for Tesseract OCR |
+| `openpyxl`    | Excel file manipulation          |
+| `spire.pdf`   | PDF processing and conversion    |
+| `Pillow`      | Image processing                 |
+| `pymupdf`     | PDF → image conversion           |
 
-Ensure Tesseract is installed on your system
+> 🧩 **Tip:** Make sure all dependencies are installed and compatible with your Python version.
 
-Provide the full path to the Tesseract executable in the sidebar
+---
 
-Common paths:
+## 🧾 Excel Image OCR Workflow
 
-Windows: C:\Program Files\Tesseract-OCR\tesseract.exe
-macOS: /usr/local/bin/tesseract
-Linux: /usr/bin/tesseract
+1. Extract images from Excel cells
+2. Process each image via **Tesseract OCR**
+3. Replace image cells with extracted text
+4. (Optional) Remove original images
+5. Export a clean `.xlsx` file
 
-Conversion Issues
-Ensure uploaded files are in supported formats (.pdf for conversion, .xlsx for OCR)
+---
 
-Check file permissions and size limits
+## 🛠 Troubleshooting
 
-Verify all dependencies are properly installed
+### ❌ **Tesseract Not Found**
 
+If not auto-detected:
 
+* Verify Tesseract installation
+* Set full path manually in the sidebar
+
+**Common Paths**
+
+* Windows → `C:\Program Files\Tesseract-OCR\tesseract.exe`
+* macOS → `/usr/local/bin/tesseract`
+* Linux → `/usr/bin/tesseract`
+
+---
+
+### ⚠️ **Conversion Issues**
+
+* Ensure supported formats:
+
+  * `.pdf` → for conversion
+  * `.xlsx` → for OCR
+* Check file permissions and size limits
+* Verify all dependencies are installed correctly
+
+---
+
+## ❤️ Credits
+
+Developed with **Python**, **Streamlit**, **Spire.PDF**, and **Tesseract OCR**
+Empowering users to automate **PDF & Excel text extraction** with AI-powered precision.
+
+---
